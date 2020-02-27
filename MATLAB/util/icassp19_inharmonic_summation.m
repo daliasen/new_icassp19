@@ -26,7 +26,7 @@ for pp = 1:1 % testing lower(1) or also upper(2) octave
         for pII=1:length(pitchGrid)
             [HL] = icassp19_inharmonic_index(X, fs, M, pitchGrid(pII),BGrid);
             HL(HL>=length(X))=[];
-            costFunction(:,B,pII) = sum(X(HL));
+            costFunction(:,B,pII) = prod(X(HL).*([1:length(HL)].^2)');
         end
         B=B+1;
     end
